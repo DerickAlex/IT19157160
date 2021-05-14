@@ -10,12 +10,19 @@ private Connection connect()
  Class.forName("com.mysql.jdbc.Driver"); 
  
  //Provide the correct details: DBServer/DBName, username, password 
- con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3308/productservice", "root", ""); 
- } 
- catch (Exception e) 
- {e.printStackTrace();} 
- return con; 
- } 
+ private Connection connect() {
+		Connection con = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// Provide the correct details: DBServer/DBName, username, password
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/order_management", "root", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("db connection error");
+		}
+		return con;
+	}
 
 
 public String insertProduct(String title, String desc, String price, String name,  String date) 
